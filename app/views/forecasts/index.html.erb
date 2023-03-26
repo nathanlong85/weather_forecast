@@ -1,0 +1,25 @@
+<%= form_with url: '/forecast', method: :get do |form| %>
+  <div class="mb-3">
+    <%= form.label :state, 'State', class: 'form-label' %>
+    <%= form.text_field :state, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :city, 'City', class: 'form-label' %>
+    <%= form.text_field :city, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :address, 'Address', class: 'form-label' %>
+    <%= form.text_field :address, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :zip_code, 'Zip Code', class: 'form-label' %>
+    <%= form.text_field :zip_code, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>
