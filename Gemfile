@@ -27,9 +27,13 @@ gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.2', '>= 5.2.3'
 gem 'jquery-rails', '~> 4.5', '>= 4.5.1'
 
+# Using Faraday for HTTP requests for simplicity
+gem 'faraday', '~> 2.7', '>= 2.7.4'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'pry-byebug'
 end
 
 group :development do

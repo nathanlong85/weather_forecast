@@ -1,0 +1,23 @@
+<h1><%= t('.current_conditions_header') %></h1>
+<% current = @forecast.periods['current'] %>
+
+<div class="pb-4">
+  <strong><%= t('.temperature') %></strong>: <%= current['temp_f'] %> °F <br />
+  <strong><%= t('.conditions') %></strong>: <%= current['condition']['text'] %>
+</div>
+
+<h1><%= t('.extended_forecast_header') %></h1>
+<% @forecast.periods['forecast']['forecastday'].each do |forecastday| %>
+  <% day = forecastday['day'] %>
+
+  <div class="row pb-4">
+    <div class="col-3">
+      <strong><%= t('.temperature_min_max') %></strong>: <%= day['mintemp_f'] %>/<%= day['maxtemp_f'] %> °F<br />
+      <strong><%= t('.conditions') %></strong>: <%= day['condition']['text'] %>
+    </div>
+
+    <div class="col">
+      <img src="<%= day['condition']['icon'] %>" />
+    </div>
+  </div>
+<% end %>
