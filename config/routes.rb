@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'forecasts#index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # Not using resourceful routing because it doesn't really
+  # make sense for this application
+  get 'forecast', to: 'forecasts#show'
 end

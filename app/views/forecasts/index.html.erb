@@ -1,0 +1,41 @@
+<%= form_with model: @form, url: '/forecast', method: :get do |f| %>
+  <div class="mb-3">
+    <%= f.label :state, t('.state_label'), class: 'form-label' %>
+    <%= f.select :state, state_options, {}, class: generate_classes(f, :state, 'form-select'), 'aria-describedby': 'stateFeedback' %>
+
+    <div id="stateFeedback" class="invalid-feedback">
+      <%= form_field_error(f, :state) %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :city, t('.city_label'), class: "form-label" %>
+    <%= f.text_field :city, class: generate_classes(f, :city, 'form-select'), 'aria-describedby': 'cityFeedback' %>
+
+    <div id="cityFeedback" class="invalid-feedback">
+      <%= form_field_error(f, :city) %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :address, t('.address_label'), class: "form-label" %>
+    <%= f.text_field :address, class: generate_classes(f, :address, 'form-select'), 'aria-describedby': 'addressFeedback' %>
+
+    <div id="addressFeedback" class="invalid-feedback">
+      <%= form_field_error(f, :city) %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :zip_code, t('.zip_code_label'), class: 'form-label' %>
+    <%= f.text_field :zip_code, class: generate_classes(f, :zip_code, 'form-control'), 'aria-describedby': 'zipCodeFeedback' %>
+
+    <div id="zipCodeFeedback" class="invalid-feedback">
+      <%= form_field_error(f, :zip_code) %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>
