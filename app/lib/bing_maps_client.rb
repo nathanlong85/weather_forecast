@@ -1,3 +1,4 @@
+# Handles HTTP requests to the Bing Maps API
 class BingMapsClient
   COUNTRY = 'US'.freeze
   BASE_URL = 'http://dev.virtualearth.net/REST/v1'.freeze

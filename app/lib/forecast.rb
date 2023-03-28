@@ -1,5 +1,6 @@
+# Represents a weather forecast and holds all of the necessary attributes
 class Forecast
-  attr_reader :address, :cached, :city, :coords, :data, :state, :zip_code
+  attr_reader :address, :cached, :city, :data, :state, :zip_code
 
   def initialize(address:, city:, state:, zip_code:)
     self.address = address
@@ -15,15 +16,14 @@ class Forecast
     # to avoid a more complicated setup
     self.data = Rails.cache.fetch(zip_code, expires_in: 30.minutes) do
       self.cached = false
-
       self.coords = BingMapsClient.fetch_coords(address:, city:, state:, zip_code:)
-      raw_forecast = WeatherApiClient.fetch_forecast(**coords)
 
-      reduce_raw_forecast(raw_forecast)
+      WeatherApiClient.fetch_forecast(**coords)
     end
   end
 
   private
 
-  attr_writer :address, :cached, :city, :coords, :data, :state, :zip_code
+  attr_accessor :coords
+  attr_writer :address, :cached, :city, :data, :state, :zip_code
 end

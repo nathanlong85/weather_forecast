@@ -1,4 +1,4 @@
-<%= form_with model: @form, url: '/forecast', method: :get do |f| %>
+<%= form_with model: @form, url: '/forecast', method: :get, id: 'forecast-lookup-form' do |f| %>
   <div class="mb-3">
     <%= f.label :state, t('.state_label'), class: 'form-label' %>
     <%= f.select :state, state_options, {}, class: generate_field_classes(@form, :state, 'form-select'), 'aria-describedby': 'stateFeedback' %>
@@ -22,7 +22,7 @@
     <%= f.text_field :address, class: generate_field_classes(@form, :address, 'form-select'), 'aria-describedby': 'addressFeedback' %>
 
     <div id="addressFeedback" class="invalid-feedback">
-      <%= form_field_error(@form, :city) %>
+      <%= form_field_error(@form, :address) %>
     </div>
   </div>
 

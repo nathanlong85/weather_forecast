@@ -1,6 +1,10 @@
-require 'simplecov'
+require 'capybara/rspec'
 
-SimpleCov.start 'rails'
+# Disabled so we're not accidentally requesting online resources
+# during testing
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
+
 
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

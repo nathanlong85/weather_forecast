@@ -1,0 +1,38 @@
+{
+  "location": {
+    "name": "Some City"
+  },
+  "current": {
+    "temp_c": 23.0,
+    "temp_f": 73.4,
+    "condition": {
+      "text": "Partly cloudy",
+      "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png",
+      "code": 1003
+    }
+  },
+  "forecast": {
+    "forecastday": [
+      {
+        "date": "2023-03-28",
+        "date_epoch": 123456789,
+        "day": {
+          "maxtemp_c": 20.7,
+          "maxtemp_f": 69.3,
+          "mintemp_c": 17.5,
+          "mintemp_f": 63.5,
+          "condition": {
+            "text": "Partly cloudy",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png",
+            "code": 1003
+          }
+        },
+        "astro": {
+        },
+        "hour": [
+
+        ]
+      }
+    ]
+  }
+}

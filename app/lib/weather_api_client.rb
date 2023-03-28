@@ -1,3 +1,4 @@
+# Handles HTTP requests to the Weather API service
 class WeatherApiClient
   API_KEY = 'b97117b06e75492299523253232803'.freeze
   BASE_URL = 'http://api.weatherapi.com/v1'.freeze
