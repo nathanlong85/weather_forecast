@@ -1,18 +1,33 @@
-<h1><%= t('.current_conditions_header') %></h1>
-<% current = @forecast.periods['current'] %>
+Put the input address up here at some point.
 
-<div class="pb-4">
-  <strong><%= t('.temperature') %></strong>: <%= current['temp_f'] %> °F <br />
-  <strong><%= t('.conditions') %></strong>: <%= current['condition']['text'] %>
+<h1><%= t('.current_conditions_header') %></h1>
+<% current = @forecast.data['current'] %>
+
+<div class="row pb-5">
+  <div class="col-3">
+    <strong><%= t('.temperature') %></strong>: <%= current['temp_f'] %> °F <br />
+    <strong><%= t('.conditions') %></strong>: <%= current['condition']['text'] %>
+  </div>
+
+  <div class="col">
+    <img src="<%= current['condition']['icon'] %>" />
+  </div>
 </div>
 
 <h1><%= t('.extended_forecast_header') %></h1>
-<% @forecast.periods['forecast']['forecastday'].each do |forecastday| %>
+<% @forecast.data['forecast']['forecastday'].each do |forecastday| %>
   <% day = forecastday['day'] %>
 
   <div class="row pb-4">
     <div class="col-3">
-      <strong><%= t('.temperature_min_max') %></strong>: <%= day['mintemp_f'] %>/<%= day['maxtemp_f'] %> °F<br />
+      <strong><%= t('.temperature_min_max') %></strong>:
+      <span class="temp-low">
+        <%= day['mintemp_f'] %>
+      </span> /
+      <span class="temp-high">
+        <%= day['maxtemp_f'] %>
+      </span> °F <br />
+
       <strong><%= t('.conditions') %></strong>: <%= day['condition']['text'] %>
     </div>
 
@@ -21,3 +36,8 @@
     </div>
   </div>
 <% end %>
+
+
+<span class="badge<%= @forecast.cached ? ' bg-success' : ' bg-danger' %>">
+  Cached: <%= @forecast.cached %>
+</span>

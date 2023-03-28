@@ -12,7 +12,7 @@ class WeatherApiClient
         aqi: 'no',
         alerts: 'no')
 
-      parse_and_reduce(res.body)
+      reduce_raw_forecast(res.body)
     end
 
     private
@@ -24,14 +24,14 @@ class WeatherApiClient
       )
     end
 
-    # This API returns a lot of data that doesn't need to be cached and
-    # passed around. This method reduces it
-    def parse_and_reduce(res_body)
-      JSON.parse(res_body).tap do |data|
-        data.slice!('current', 'forecast')
-        data['current'].slice!('temp_f', 'condition')
+    # The forecast API returns a lot of data that doesn't need to be cached
+    # and passed around. This method reduces it to what's important
+    def reduce_raw_forecast(raw_data)
+      JSON.parse(raw_data).tap do |d|
+        d.slice!('current', 'forecast')
+        d['current'].slice!('temp_f', 'condition')
 
-        data['forecast']['forecastday'].map! do |forecastday|
+        d['forecast']['forecastday'].map! do |forecastday|
           forecastday['day'].slice!('maxtemp_f', 'mintemp_f', 'condition')
           forecastday.slice('date', 'day')
         end
