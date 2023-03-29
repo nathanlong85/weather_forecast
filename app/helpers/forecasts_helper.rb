@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Helper methods for displaying the forecast data
 module ForecastsHelper
   def state_options
     [nil] + ForecastForm::VALID_STATES

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Represents a weather forecast and holds all of the necessary attributes
 class Forecast
   attr_reader :address, :cached, :city, :data, :state, :zip_code

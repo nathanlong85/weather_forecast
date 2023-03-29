@@ -30,7 +30,7 @@ This application must be run from a host with internet access to retrieve weathe
 
 Assuming the steps from [Running the Application](#running-the-application) were followed, a simple `bundle exec rspec` from the project root should successfully run the test suite.
 
-## Notes
+## Notes to the Reviewers
 
 In order to showcase my Rails skills, I opted for doing all of the form validations on the server-side instead of going the JavaScript route.
 

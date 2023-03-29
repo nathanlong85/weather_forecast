@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# The main controller for the app. Displays the forecast form and
+# the forecast itself
 class ForecastsController < ApplicationController
   def index
     @form = ForecastForm.new

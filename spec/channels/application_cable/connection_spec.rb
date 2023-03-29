@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # This class is empty, but Simplecov reports 0% coverage unless there's

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 # Handles HTTP requests to the Bing Maps API
 class BingMapsClient
-  COUNTRY = 'US'.freeze
-  BASE_URL = 'http://dev.virtualearth.net/REST/v1'.freeze
-  API_KEY = 'AiDmXQ7WvxqAPNZCjwO_v4vwrPN5KXl5VdnV96QaaiKT1BjF40VSKtom36a2uWzx'.freeze
+  COUNTRY = 'US'
+  BASE_URL = 'http://dev.virtualearth.net/REST/v1'
+  API_KEY = 'AiDmXQ7WvxqAPNZCjwO_v4vwrPN5KXl5VdnV96QaaiKT1BjF40VSKtom36a2uWzx'
 
   class << self
     # Fetch latitude/longitude coordinates for an address using Bing's

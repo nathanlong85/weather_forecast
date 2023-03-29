@@ -3,12 +3,17 @@
     "coverage": {
       "/home/nlong/Projects/ruby/weather_forecast/app/helpers/application_helper.rb": {
         "lines": [
+          null,
+          null,
           1,
           null
         ]
       },
       "/home/nlong/Projects/ruby/weather_forecast/app/helpers/forecasts_helper.rb": {
         "lines": [
+          null,
+          null,
+          null,
           1,
           1,
           21,
@@ -31,6 +36,8 @@
       },
       "/home/nlong/Projects/ruby/weather_forecast/app/channels/application_cable/channel.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
@@ -39,6 +46,8 @@
       },
       "/home/nlong/Projects/ruby/weather_forecast/app/channels/application_cable/connection.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
@@ -47,12 +56,16 @@
       },
       "/home/nlong/Projects/ruby/weather_forecast/app/controllers/application_controller.rb": {
         "lines": [
+          null,
+          null,
           1,
           null
         ]
       },
       "/home/nlong/Projects/ruby/weather_forecast/app/lib/bing_maps_client.rb": {
         "lines": [
+          null,
+          null,
           null,
           1,
           1,
@@ -93,6 +106,8 @@
       "/home/nlong/Projects/ruby/weather_forecast/app/lib/forecast.rb": {
         "lines": [
           null,
+          null,
+          null,
           1,
           1,
           null,
@@ -109,10 +124,10 @@
           null,
           null,
           12,
-          4,
-          4,
+          5,
+          5,
           null,
-          4,
+          5,
           null,
           null,
           null,
@@ -125,6 +140,8 @@
       },
       "/home/nlong/Projects/ruby/weather_forecast/app/lib/weather_api_client.rb": {
         "lines": [
+          null,
+          null,
           null,
           1,
           1,
@@ -171,6 +188,9 @@
       },
       "/home/nlong/Projects/ruby/weather_forecast/app/models/forecast_form.rb": {
         "lines": [
+          null,
+          null,
+          null,
           1,
           1,
           1,
@@ -180,8 +200,8 @@
           1,
           1,
           null,
-          null,
           1,
+          null,
           null,
           null,
           null,
@@ -200,6 +220,10 @@
       },
       "/home/nlong/Projects/ruby/weather_forecast/app/controllers/forecasts_controller.rb": {
         "lines": [
+          null,
+          null,
+          null,
+          null,
           1,
           1,
           16,
@@ -229,6 +253,6 @@
         ]
       }
     },
-    "timestamp": 1680058406
+    "timestamp": 1680060958
   }
 }
