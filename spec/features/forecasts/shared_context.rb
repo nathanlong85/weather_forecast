@@ -20,7 +20,7 @@ RSpec.shared_context 'with the index form filled out' do
   end
 end
 
-RSpec.shared_context 'with the external API responses stubbed' do
+RSpec.shared_context 'with successful external API responses stubbed' do
   let(:forecast_response) do
     JSON.parse(Rails.root.join('spec/fixtures/weather_api_valid.json').read)
   end

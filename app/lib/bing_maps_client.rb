@@ -10,12 +10,18 @@ class BingMapsClient
     # Fetch latitude/longitude coordinates for an address using Bing's
     # Geocoding API
     def fetch_coords(state:, city:, address:, zip_code:)
-      res = connection.get('Locations',
-        addressLine: address,
-        adminDistrict: state,
-        countryRegion: COUNTRY,
-        locality: city,
-        postalCode: zip_code)
+      begin
+        res = connection.get('Locations',
+          addressLine: address,
+          adminDistrict: state,
+          countryRegion: COUNTRY,
+          locality: city,
+          postalCode: zip_code)
+
+        raise "Status #{res.status}" unless res.success?
+      rescue => e # rubocop:disable Style/RescueStandardError
+        raise HttpFetchError, "Unable to fetch geocoding data: #{e.message}"
+      end
 
       parsed = JSON.parse(res.body)
 

@@ -61,5 +61,19 @@ RSpec.describe BingMapsClient do
         expect(resulting_coords).to eq(latitude:, longitude:)
       end
     end
+
+    context 'when the request is not successful' do
+      before do
+        stub_request(:get, %r{dev\.virtualearth\.net/REST/v1})
+          .to_return(status: 503)
+      end
+
+      it 'raises an exception' do
+        expect { resulting_coords }.to raise_error(
+          HttpFetchError,
+          'Unable to fetch geocoding data: Status 503'
+        )
+      end
+    end
   end
 end

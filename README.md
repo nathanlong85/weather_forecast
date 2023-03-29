@@ -32,6 +32,6 @@ Assuming the steps from [Running the Application](#running-the-application) were
 
 ## Notes to the Reviewers
 
-In order to showcase my Rails skills, I opted for doing all of the form validations on the server-side instead of going the JavaScript route.
+In order to showcase my Rails skills, I opted for doing all of the form validations on the server-side instead of going the JavaScript route. Also, I realize that API keys typically don't just go in the code to be seen by anybody. But it seemed ok in this situation as they aren't important and there's no secrets system in place to use.
 
 Additionally, I'm sure it would make sense to take a closer look at the Geocoding results and offer the user more options to select the correct location if more than one is returned. That would make a great feature request for later.

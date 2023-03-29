@@ -5,7 +5,7 @@ require_relative '../shared_context'
 
 RSpec.describe 'cached indicator' do
   include_context 'with the index form filled out'
-  include_context 'with the external API responses stubbed'
+  include_context 'with successful external API responses stubbed'
 
   before do
     # rubocop:disable RSpec/AnyInstance

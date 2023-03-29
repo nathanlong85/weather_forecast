@@ -9,11 +9,17 @@ class WeatherApiClient
   class << self
     # Fetch and parse the weather forecast data
     def fetch_forecast(latitude:, longitude:)
-      res = connection.get('forecast.json',
-        q: "#{latitude},#{longitude}",
-        days: FORECAST_DAYS,
-        aqi: 'no',
-        alerts: 'no')
+      begin
+        res = connection.get('forecast.json',
+          q: "#{latitude},#{longitude}",
+          days: FORECAST_DAYS,
+          aqi: 'no',
+          alerts: 'no')
+
+        raise "Status #{res.status}" unless res.success?
+      rescue => e # rubocop:disable Style/RescueStandardError
+        raise HttpFetchError, "Unable to fetch forecast data: #{e.message}"
+      end
 
       reduce_raw_forecast(res.body)
     end

@@ -10,6 +10,9 @@ AllCops:
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
+Metrics/MethodLength:
+  Max: 15
+
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
 

@@ -7,7 +7,7 @@ require_relative '../shared_context'
 # are covered in the 'forecasts#index' feature specs.
 RSpec.describe 'weather forecast' do
   include_context 'with the index form filled out'
-  include_context 'with the external API responses stubbed'
+  include_context 'with successful external API responses stubbed'
 
   before { click_button('Submit') }
 
@@ -31,16 +31,4 @@ RSpec.describe 'weather forecast' do
     end
   end
   # rubocop:enable RSpec/MultipleExpectations
-
-  context 'when the content has not been cached' do
-    it 'displays cached true' do
-      expect(page).to have_content('Cached: true')
-    end
-  end
-
-  context 'when the content has been cached' do
-    it 'displays cached false' do
-      expect(page).to have_content('Cached: true')
-    end
-  end
 end

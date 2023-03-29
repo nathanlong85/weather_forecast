@@ -7,15 +7,43 @@ RSpec.describe 'forecast lookup form' do
   include_context 'with the index form filled out'
 
   context 'when all fields are filled out correctly' do
-    include_context 'with the external API responses stubbed'
+    context 'when an error occurs while fetching forecast data' do
+      let(:err_msg) { 'Unable to fetch geocoding data: Status 503' }
 
-    # rubocop:disable RSpec/MultipleExpectations
-    it 'does not re-render the index page to display errors' do
-      click_button('Submit')
-      expect(page).not_to have_selector('#forecast-lookup-form')
-      expect(page).to have_current_path(forecast_path, ignore_query: true)
+      before do
+        # Intentionally cause the geocoding request to fail to test
+        # the error handling and flash behavior
+        stub_request(:get, %r{dev\.virtualearth\.net/REST/v1})
+          .to_return(status: 503)
+
+        click_button('Submit')
+      end
+
+      # rubocop:disable RSpec/MultipleExpectations
+      it 're-renders the index page to display errors' do
+        expect(page).to have_selector('#forecast-lookup-form')
+        expect(page).to have_current_path(forecast_path, ignore_query: true)
+      end
+      # rubocop:enable RSpec/MultipleExpectations
+
+      it 'displays the error in the flash container' do
+        within('#flash-container') do
+          expect(page).to have_content(err_msg)
+        end
+      end
     end
-    # rubocop:enable RSpec/MultipleExpectations
+
+    context 'when no errors occur while fetching forecast data' do
+      include_context 'with successful external API responses stubbed'
+
+      # rubocop:disable RSpec/MultipleExpectations
+      it 'does not re-render the index page to display errors' do
+        click_button('Submit')
+        expect(page).not_to have_selector('#forecast-lookup-form')
+        expect(page).to have_current_path(forecast_path, ignore_query: true)
+      end
+      # rubocop:enable RSpec/MultipleExpectations
+    end
   end
 
   context 'when not all fields are properly filled out' do
@@ -29,7 +57,7 @@ RSpec.describe 'forecast lookup form' do
       end
     end
 
-    # The error message behavior has already been tested in the
+    # The form field error message behavior has already been tested in the
     # ForecastForm model specs, so if one `state` error displays,
     # the others will as well
     context 'when the state field is missing' do
@@ -53,7 +81,7 @@ RSpec.describe 'forecast lookup form' do
       it_behaves_like 'an error being displayed on the form'
     end
 
-    # The error message behavior has already been tested in the
+    # The form field error message behavior has already been tested in the
     # ForecastForm model specs, so if one `zip_code` error displays,
     # the others will as well
     context 'when the zip code field is missing' do

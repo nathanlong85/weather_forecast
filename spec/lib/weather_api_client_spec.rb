@@ -72,5 +72,19 @@ RSpec.describe WeatherApiClient do
         expect(resulting_forecast).to eq(expected_return_data)
       end
     end
+
+    context 'when the request is not successful' do
+      before do
+        stub_request(:get, %r{api\.weatherapi\.com/v1/forecast\.json})
+          .to_return(status: 503)
+      end
+
+      it 'raises an exception' do
+        expect { resulting_forecast }.to raise_error(
+          HttpFetchError,
+          'Unable to fetch forecast data: Status 503'
+        )
+      end
+    end
   end
 end

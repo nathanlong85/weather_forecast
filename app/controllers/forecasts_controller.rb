@@ -3,6 +3,11 @@
 # The main controller for the app. Displays the forecast form and
 # the forecast itself
 class ForecastsController < ApplicationController
+  rescue_from HttpFetchError do |exception|
+    flash.now[:alert] = exception.message
+    render :index
+  end
+
   def index
     @form = ForecastForm.new
   end

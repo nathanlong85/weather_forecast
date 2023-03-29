@@ -14,7 +14,14 @@
     <%= render partial: 'header' %>
 
     <div class="container">
-      <%= content_for :flash_messages %>
+      <div id="flash-container">
+        <% flash.each do |type, msg| %>
+          <div class="<%= type %> <%= type %>-danger %>">
+            <%= msg %>
+          </div>
+        <% end %>
+      </div>
+
       <%= yield %>
     </div>
   </body>

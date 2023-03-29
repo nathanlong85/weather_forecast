@@ -24,9 +24,6 @@ RSpec.describe Forecast do
 
     let(:forecast_data) { 'Some forecast data' }
 
-    # Remove any cache values set during the examples
-    after { Rails.cache.clear }
-
     context 'when the forecast is already cached for the zip code' do
       before { Rails.cache.write(zip_code, 'Some Data') }
 
