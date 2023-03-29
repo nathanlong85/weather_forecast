@@ -1,24 +1,37 @@
-# README
+# Weather Forecast
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## General Information
+Displays a weather forecast using the supplied address on the index page. Provides:
 
-Things you may want to cover:
+- Current conditions
+- Extended forecast
+- Forecast data caching based on zip code with an indicator to show if there was a cache hit
 
-* Ruby version
+## Application Specifics
 
-* System dependencies
+- Ruby Version: 3.2.0
+- Rails Version: 7.0.4.3
+- Test Coverage: 100%
+- Geocoding API: [Bing Maps Locations API](https://learn.microsoft.com/en-us/bingmaps/rest-services/locations)
+- Weather Data API: [WeatherAPI](https://www.weatherapi.com)
 
-* Configuration
+### Running the Application
 
-* Database creation
+This application must be run from a host with internet access to retrieve weather data.
 
-* Database initialization
+1. Clone the Github repo
+2. Ensure the specified Ruby version is installed
+3. Install bundler with `gem install bundler`
+4. Run a `bundle install`
+5. Run `bundle exec rails s` to start a Puma server on port 3000.
+6. Navigate to `http://localhost:3000`
 
-* How to run the test suite
+### Running the Test Suite
 
-* Services (job queues, cache servers, search engines, etc.)
+Assuming the steps from [Running the Application](#running-the-application) were followed, a simple `bundle exec rspec` from the project root should successfully run the test suite.
 
-* Deployment instructions
+## Notes
 
-* ...
+In order to showcase my Rails skills, I opted for doing all of the form validations on the server-side instead of going the JavaScript route.
+
+Additionally, I'm sure it would make sense to take a closer look at the Geocoding results and offer the user more options to select the correct location if more than one is returned. That would make a great feature request for later.

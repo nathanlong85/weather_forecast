@@ -1,42 +1,64 @@
-Put the input address up here at some point.
+<h2 class="mb-4">
+  <%= @forecast.address %>, <%= @forecast.city %>, <%= @forecast.state %> <%= @forecast.zip_code %>
+</h2>
 
-<h1><%= t('.current_conditions_header') %></h1>
+<h3><%= t('.current_conditions_header') %></h1>
 <% current = @forecast.data['current'] %>
 
-<div class="row pb-5">
-  <div class="col-3">
-    <strong><%= t('.temperature') %></strong>: <%= current['temp_f'] %> °F <br />
-    <strong><%= t('.conditions') %></strong>: <%= current['condition']['text'] %>
-  </div>
+<div id="current-conditions-card" class="row row-cols-3 g-1 mb-5">
+  <div class="card h-100">
+    <div class="card-body">
+      <h5 class="card-title"><%= t('.current_conditions_header') %></h5>
+      <div class="card-text">
+        <div class="row pb-4">
+          <div class="col-8">
+            <strong><%= t('.temperature') %></strong><br />
+            <%= current['temp_f'] %> °F <br /><br />
 
-  <div class="col">
-    <img src="<%= current['condition']['icon'] %>" />
+            <strong><%= t('.conditions') %></strong><br />
+            <%= current['condition']['text'] %>
+          </div>
+
+          <div class="col">
+            <img src="<%= current['condition']['icon'] %>" />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<h1><%= t('.extended_forecast_header') %></h1>
-<% @forecast.data['forecast']['forecastday'].each do |forecastday| %>
-  <% day = forecastday['day'] %>
+<h3><%= t('.extended_forecast_header') %></h1>
 
-  <div class="row pb-4">
-    <div class="col-3">
-      <strong><%= t('.temperature_min_max') %></strong>:
-      <span class="temp-low">
-        <%= day['mintemp_f'] %>
-      </span> /
-      <span class="temp-high">
-        <%= day['maxtemp_f'] %>
-      </span> °F <br />
-
-      <strong><%= t('.conditions') %></strong>: <%= day['condition']['text'] %>
-    </div>
+<div id="extended-forecast-cards" class="row row-cols-3 g-4 mb-2">
+  <% @forecast.data['forecast']['forecastday'].each do |forecastday| %>
+    <% day = forecastday['day'] %>
 
     <div class="col">
-      <img src="<%= day['condition']['icon'] %>" />
-    </div>
-  </div>
-<% end %>
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= forecastday['date'] %></h5>
+          <div class="card-text">
+            <div class="row pb-4">
+              <div class="col-8">
+                <strong><%= t('.temperature_min_max') %></strong><br />
+                <span class="temp-low"><%= day['mintemp_f'] %></span> /
+                <span class="temp-high"><%= day['maxtemp_f'] %></span> °F <br /><br />
 
+                <strong><%= t('.conditions') %></strong><br />
+                <%= day['condition']['text'] %>
+              </div>
+
+              <div class="col">
+                <img src="<%= day['condition']['icon'] %>" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <span class="badge<%= @forecast.cached ? ' bg-success' : ' bg-danger' %>">
   Cached: <%= @forecast.cached %>
